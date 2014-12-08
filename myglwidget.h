@@ -66,6 +66,7 @@ private:
     QString texture;
 
     int id_timer;
+    double animationTemp;
 
 signals:
 

@@ -20,6 +20,7 @@ MyGLWidget::MyGLWidget(QWidget *parent) :
     materialShiness = 10;
     addTexture = false, addAnimation = false, texture = "ball";
     id_timer = 0;
+    animationTemp = pi/2;
 
 }
 
@@ -255,9 +256,18 @@ void MyGLWidget::resizeGL(int width, int height){
 
 void MyGLWidget::timerEvent(QTimerEvent *event) {
 
+    if(animationTemp < 5 * pi / 2)
+        animationTemp += 0.025;
+    else animationTemp = pi / 2;
 
+    xLightColor = fabs(sin(animationTemp));
+    yLightColor = fabs(sin(animationTemp));
+    zLightColor = fabs(sin(animationTemp));
+    //qDebug() << animationTemp << endl;
+    //qDebug() << xLightColor << endl;
+    //qDebug() << yLightColor << endl;
+    //qDebug() << zLightColor << endl;
 
-    xRot += 1;
     updateGL();
 }
 
@@ -391,6 +401,7 @@ void MyGLWidget::addTextureCheck(bool cheked) {
 void MyGLWidget::addAnimationCheck(bool cheked) {
     if(cheked) {
         addAnimation = true;
+        animationTemp = pi/2;
         id_timer = startTimer(10);
     }
     else {
