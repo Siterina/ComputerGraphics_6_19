@@ -18,7 +18,7 @@ MyGLWidget::MyGLWidget(QWidget *parent) :
     xLightColor = 1, yLightColor = 1, zLightColor = 1;
     xAmbientColor = 1, yAmbientColor = 1, zAmbientColor = 1;
     materialShiness = 10;
-    addTexture = false, addAnimation = false,texture = "ball";
+    addTexture = false, addAnimation = false, texture = "ball";
 
 }
 
@@ -111,17 +111,17 @@ void MyGLWidget::countFigurePoints() {
         tempPoint.clear();
 
         if(addTexture) {
-            textures.push_back(0);
-            textures.push_back(0.01);
+            textures.push_back(0.1);
+            textures.push_back(0.11);
 
-            textures.push_back(0);
-            textures.push_back(0.01);
+            textures.push_back(0.1);
+            textures.push_back(0.11);
 
-            textures.push_back(0);
-            textures.push_back(0.01);
+            textures.push_back(0.1);
+            textures.push_back(0.11);
 
-            textures.push_back(0);
-            textures.push_back(0.01);
+            textures.push_back(0.1);
+            textures.push_back(0.11);
        }
     }
 }
@@ -132,6 +132,8 @@ void MyGLWidget::genTextures() {
         textureID[0] = bindTexture(QPixmap(QString("../textures/to_test_1_1024x512.png")), GL_TEXTURE_2D);
     if(texture == "paper")
         textureID[0] = bindTexture(QPixmap(QString("../textures/to_test_2_1024x512.png")), GL_TEXTURE_2D);
+    if(texture == "orange")
+        textureID[0] = bindTexture(QPixmap(QString("../textures/to_test_3_1024x512.png")), GL_TEXTURE_2D);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
