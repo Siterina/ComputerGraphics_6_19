@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QGLWidget>
+#include <QTimerEvent>
 
 class MyGLWidget : public QGLWidget
 {
@@ -19,6 +20,7 @@ protected:
     void countFigurePoints();
     QVector3D bottomPoint(double phi);
     void genTextures();
+    void timerEvent(QTimerEvent *event); // обработка события таймера
 
 private:
 
@@ -62,6 +64,8 @@ private:
     bool addTexture;
     bool addAnimation;
     QString texture;
+
+    int id_timer;
 
 signals:
 

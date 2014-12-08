@@ -19,6 +19,7 @@ MyGLWidget::MyGLWidget(QWidget *parent) :
     xAmbientColor = 1, yAmbientColor = 1, zAmbientColor = 1;
     materialShiness = 10;
     addTexture = false, addAnimation = false, texture = "ball";
+    id_timer = 0;
 
 }
 
@@ -252,6 +253,16 @@ void MyGLWidget::resizeGL(int width, int height){
     glMatrixMode(GL_MODELVIEW);
 }
 
+void MyGLWidget::timerEvent(QTimerEvent *event) {
+
+
+
+    xRot += 1;
+    updateGL();
+}
+
+
+
 /*******************************************/
 /*                Slots                    */
 /*******************************************/
@@ -378,9 +389,14 @@ void MyGLWidget::addTextureCheck(bool cheked) {
 }
 
 void MyGLWidget::addAnimationCheck(bool cheked) {
-    if(cheked)
+    if(cheked) {
         addAnimation = true;
-    else addAnimation = false;
+        id_timer = startTimer(10);
+    }
+    else {
+        killTimer(id_timer);
+        addAnimation = false;
+    }
     updateGL();
 }
 
